@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>title</title>
+	<script src="src/verify.js"></script>
+	<style>
+	.error{
+		height: 25px; 
+		line-height: 25px; 
+		margin: 0px 0px 0px 3px; 
+		padding: 0px 0px 0px 25px; 
+		color: rgb(153, 153, 153); 
+		background: url(src/error.gif) no-repeat scroll 0px 6px transparent;
+	}
+	</style>
+</head>
+
+<body>
+    <form>
+		<div>账户信息<input type="text" verifys="{d:'请输入账户信息',v:{r:/^[0-9A-Za-z-\._]+@\w+(\.(\w){1,3}){1,3}$|^[0-9A-Za-z-_]{3,16}$/,c:'账户信息格式正确',e:'账户信息格式不正确'}}" name="email" class=""><span id="emailTip" class="error"></span>
+		</div>
+		
+		<div>密码<input type="password" class="field" name="user_password" verifys="{d:'请填写6-20位密码！',v:{r:/^.{6,20}$/,c:'密码格式正确！',e:'填写的密码格式不正确！'}}" /><span id="user_passwordTip"></span></div>
+		
+		<div>确认密码:
+		<input type="password" class="field" name="user_repassword" verifys="{d:'请填写确认密码！',v:{r:/^.{6,20}$/,c:'确认密码格式正确！',e:'确认密码格式不正确！'},c:{m:'=',w:'user_password',c:'确认密码格式正确！',e:'两次填写的密码不一致！'}}" /><span id="user_repasswordTip"></span>
+		</div>
+
+	<div>验证码:
+	<input type="text" class="field" name="vericode" verifys="{d:'请填写验证码！',v:{r:/^[0-9a-zA-Z]{5}$/,c:'验证码格式正确！',e:'验证码格式错误！'}}" /><span id="vericodeTip"></span>
+	</div>
+
+	<div>
+	<input type="checkbox" checked="checked" name="servitems" verifys="{d:'注册协议',s:{r:'1'}}"/>我已阅读并同意注册协议
+	<span id="servitemsTip" class="error"/>注册协议</span>
+	</div>
+		
+		<div><input type="submit" value="提交" onclick="return false;"/></div>
+	</form>
+</body>
